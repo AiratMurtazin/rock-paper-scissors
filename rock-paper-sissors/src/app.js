@@ -7,6 +7,9 @@ const scissorsBtn = document.querySelector(".scissors");
 const displayCompChoice = document.querySelector(".comp-choice");
 const scoreComp = document.querySelector(".score__comp");
 const scorePlayer = document.querySelector(".score__player");
+const modal = document.querySelector(".modal");
+const modalInfo = document.querySelector(".modal__info");
+const modalInfoText = document.querySelector(".modal__info__text");
 let arr = ["rock", "paper", "scissors"];
 //* FUNCTIONS
 const elementFromHtml = html => {
@@ -98,15 +101,22 @@ allBtns.forEach(btn => {
 		}
 
 		if (scoreComp.textContent === "5") {
-			alert("Comp wins!");
-			location.reload();
+			modal.classList.add("active");
+			modalInfo.classList.add("active");
+			modalInfoText.innerHTML += "Never Send A Human To Do A Machine's Job";
 		}
 		if (scorePlayer.textContent === "5") {
-			alert("Player wins!");
-			location.reload();
+			modal.classList.add("active");
+			modalInfo.classList.add("active");
+			modalInfoText.innerHTML += "He is Dovakhiin - Dragonborn!";
 		}
+		modal.addEventListener("click", () => {
+			location.reload();
+		});
+		modalInfo.addEventListener("click", () => {
+			location.reload();
+		});
 	});
 });
-//TODO modal window with results
 //TODO add animation
 //TODO refactor JS
