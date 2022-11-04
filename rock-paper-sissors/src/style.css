@@ -50,6 +50,7 @@ body {
 
 .comp-choice {
 	width: 10rem;
+	max-height: 10rem;
 	margin: 15px auto;
 }
 

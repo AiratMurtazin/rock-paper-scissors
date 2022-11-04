@@ -1,5 +1,6 @@
 "use strict";
 const allBtns = document.querySelectorAll(".choose-opt");
+const mainContainer = document.querySelector(".main");
 const paperBtn = document.querySelector(".paper");
 const rockBtn = document.querySelector(".rock");
 const scissorsBtn = document.querySelector(".scissors");
@@ -16,49 +17,49 @@ const elementFromHtml = html => {
 	return template.content.firstElementChild;
 };
 // console random pc's choise
-function computerChoice() {
+function randomizer() {
 	let random = Math.floor(Math.random() * arr.length);
 	return arr[random];
 }
-
+let compChoice;
 // show on the page what pc chose(dynamic html)
 let scissorsImg = elementFromHtml(`	<img
-src="../assets/icons/scissors.png"/> class="comp-choice" `);
+src="../assets/icons/scissors.png"/> " `);
 
 let paperImg = elementFromHtml(`	<img
-src="../assets/icons/paper.png"/> class="comp-choice"`);
+src="../assets/icons/paper.png"/>"`);
 
 let rockImg = elementFromHtml(`	<img
-src="../assets/icons/rock.png"/> class="comp-choice"`);
+src="../assets/icons/rock.png"/> "`);
 
 let smithsChoice = elementFromHtml(`<p>Smith's choice</p>`);
 smithsChoice.classList.add("smithsChoice");
-
-function showCompChoice(choice) {
-	choice = computerChoice();
-	if (choice === "scissors") {
-		displayCompChoice.remove(paperImg);
-		displayCompChoice.remove(rockImg);
+function showCompChoice() {
+	compChoice = randomizer();
+	if (compChoice === "scissors") {
+		rockImg.style.display = "none";
+		paperImg.style.display = "none";
+		scissorsImg.style.display = "block";
 		displayCompChoice.append(scissorsImg);
 		scissorsImg.classList.add("comp-choice");
-		displayCompChoice.before(smithsChoice);
 	}
-	if (choice === "paper") {
-		displayCompChoice.remove(rockImg);
-		displayCompChoice.remove(scissorsImg);
+	if (compChoice === "paper") {
+		rockImg.style.display = "none";
+		scissorsImg.style.display = "none";
+		paperImg.style.display = "block";
 		displayCompChoice.append(paperImg);
 		paperImg.classList.add("comp-choice");
-		displayCompChoice.before(smithsChoice);
 	}
-	if (choice === "rock") {
-		displayCompChoice.remove(paperImg);
-		displayCompChoice.remove(scissorsImg);
+	if (compChoice === "rock") {
+		scissorsImg.style.display = "none";
+		paperImg.style.display = "none";
+		rockImg.style.display = "block";
 		displayCompChoice.append(rockImg);
 		rockImg.classList.add("comp-choice");
-		displayCompChoice.before(smithsChoice);
 	}
-	return choice;
+	return compChoice;
 }
+
 //* EVENT LISTENERS
 // вывести, что выбрал челоек и что выбрал комп
 let humanChoice;
@@ -76,25 +77,26 @@ scissorsBtn.addEventListener("click", () => {
 
 allBtns.forEach(btn => {
 	btn.addEventListener("click", () => {
-		if (humanChoice === "paper" && showCompChoice() === "scissors") {
+		showCompChoice();
+		if (humanChoice === "paper" && compChoice === "scissors") {
 			scoreComp.textContent++;
 		}
-		if (humanChoice === "paper" && showCompChoice() === "rock") {
+		if (humanChoice === "paper" && compChoice === "rock") {
 			scorePlayer.textContent++;
 		}
-		if (humanChoice === "rock" && showCompChoice() === "scissors") {
+		if (humanChoice === "rock" && compChoice === "scissors") {
 			scorePlayer.textContent++;
 		}
-		if (humanChoice === "rock" && showCompChoice() === "paper") {
+		if (humanChoice === "rock" && compChoice === "paper") {
 			scoreComp.textContent++;
 		}
-		if (humanChoice === "scissors" && showCompChoice() === "paper") {
+		if (humanChoice === "scissors" && compChoice === "paper") {
 			scorePlayer.textContent++;
 		}
-		if (humanChoice === "scissors" && showCompChoice() === "rock") {
+		if (humanChoice === "scissors" && compChoice === "rock") {
 			scoreComp.textContent++;
 		}
-		console.log(scoreComp.textContent, scorePlayer.textContent);
+
 		if (scoreComp.textContent === "5") {
 			alert("Comp wins!");
 			location.reload();
@@ -105,9 +107,6 @@ allBtns.forEach(btn => {
 		}
 	});
 });
-// function addScore() {
-// 	console.log(showCompChoice(), humanChoice);
-// }
-// addScore();
-// add number to the score
-// open modal window with info about results
+//TODO modal window with results
+//TODO add animation
+//TODO refactor JS
