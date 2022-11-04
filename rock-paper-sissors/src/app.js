@@ -4,6 +4,8 @@ const paperBtn = document.querySelector(".paper");
 const rockBtn = document.querySelector(".rock");
 const scissorsBtn = document.querySelector(".scissors");
 const displayCompChoice = document.querySelector(".comp-choice");
+const scoreComp = document.querySelector(".score__comp");
+const scorePlayer = document.querySelector(".score__player");
 let arr = ["rock", "paper", "scissors"];
 //* FUNCTIONS
 const elementFromHtml = html => {
@@ -71,10 +73,36 @@ paperBtn.addEventListener("click", () => {
 scissorsBtn.addEventListener("click", () => {
 	humanChoice = "scissors";
 });
+
 allBtns.forEach(btn => {
 	btn.addEventListener("click", () => {
-		showCompChoice();
-		console.log(humanChoice);
+		if (humanChoice === "paper" && showCompChoice() === "scissors") {
+			scoreComp.textContent++;
+		}
+		if (humanChoice === "paper" && showCompChoice() === "rock") {
+			scorePlayer.textContent++;
+		}
+		if (humanChoice === "rock" && showCompChoice() === "scissors") {
+			scorePlayer.textContent++;
+		}
+		if (humanChoice === "rock" && showCompChoice() === "paper") {
+			scoreComp.textContent++;
+		}
+		if (humanChoice === "scissors" && showCompChoice() === "paper") {
+			scorePlayer.textContent++;
+		}
+		if (humanChoice === "scissors" && showCompChoice() === "rock") {
+			scoreComp.textContent++;
+		}
+		console.log(scoreComp.textContent, scorePlayer.textContent);
+		if (scoreComp.textContent === "5") {
+			alert("Comp wins!");
+			location.reload();
+		}
+		if (scorePlayer.textContent === "5") {
+			alert("Player wins!");
+			location.reload();
+		}
 	});
 });
 // function addScore() {
