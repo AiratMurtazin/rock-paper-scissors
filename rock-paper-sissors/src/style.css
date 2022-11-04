@@ -1,0 +1,61 @@
+body {
+	background-color: black;
+}
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Roboto&display=swap");
+* {
+	font-family: "Merienda", cursive;
+}
+
+.main {
+	margin: 0 auto;
+	width: 99%;
+	height: 950px;
+	background: #649173;
+	background: -webkit-linear-gradient(to right, #dbd5a4, #649173);
+	border-radius: 16px;
+	background: linear-gradient(to right, #dbd5a4, #649173);
+	box-shadow: 0px 3px 10px 2px rgb(255, 255, 255);
+}
+
+.header {
+	text-align: center;
+	padding-top: 25px;
+}
+
+.choose {
+	display: flex;
+	margin-top: 125px;
+	justify-content: space-around;
+}
+
+.choose-opt {
+	cursor: pointer;
+	width: 10%;
+}
+
+.score {
+	display: flex;
+	margin-top: 45px;
+	justify-content: center;
+	gap: 50px;
+}
+
+.score {
+	font-size: 3rem;
+}
+
+.text {
+	font-size: 1.5rem;
+}
+
+.comp-choice {
+	width: 10rem;
+	margin: 15px auto;
+}
+
+.smithsChoice {
+	font-size: 1rem;
+	color: black;
+	text-align: center;
+	margin: 0;
+}
