@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<script src="app.js" defer></script>
+		<title>Rock-paper-scissors</title>
+	</head>
+	<body>
+		<main class="main">
+			<h1 class="header">Let's play Rock, Paper or Scissors!</h1>
+			<h3 class="header rule">First to score 5 points wins the game</h3>
+			<section class="choose">
+				<img
+					src="../assets/icons/rock.png"
+					class="choose-opt rock"
+					alt="rock"
+				/>
+				<img
+					src="../assets/icons/paper.png"
+					class="choose-opt paper"
+					alt="paper"
+				/>
+				<img
+					src="../assets/icons/scissors.png"
+					class="choose-opt scissors"
+					alt="scissors"
+				/>
+			</section>
+			<section class="score">
+				<div class="player">
+					<h2 class="score score__player">0</h2>
+					<p class="text text__player">Dovakhiin</p>
+				</div>
+				<div class="comp">
+					<h2 class="score score__comp">0</h2>
+					<p class="text text__comp">Agent Smith</p>
+				</div>
+			</section>
+			<div class="modal__info">
+				<p class="modal__info__text"></p>
+			</div>
+			<div class="modal"></div>
+			<div class="comp-choice"></div>
+		</main>
+	</body>
+</html>
